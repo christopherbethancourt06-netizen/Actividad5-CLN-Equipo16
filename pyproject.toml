@@ -2,6 +2,8 @@
 testpaths = ["tests"]
 # La raíz del proyecto se agrega a sys.path para que `pytest` (sin `python -m`) encuentre el paquete `src`.
 pythonpath = ["."]
+# Una conexión o sesión sin cerrar hace fallar la suite (limpieza de recursos entre pruebas).
+filterwarnings = ["error::ResourceWarning", "error::pytest.PytestUnraisableExceptionWarning"]
 
 [tool.coverage.run]
 source = ["src"]

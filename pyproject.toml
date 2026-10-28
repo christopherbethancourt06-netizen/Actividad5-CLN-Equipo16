@@ -1,6 +1,10 @@
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# La raíz del proyecto se agrega a sys.path para que `pytest` (sin `python -m`) encuentre el paquete `src`.
+pythonpath = ["."]
+
 [tool.coverage.run]
 source = ["src"]
+
 [tool.ruff]
 line-length = 100

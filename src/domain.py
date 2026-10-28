@@ -12,6 +12,8 @@ class Order:
     discount: float = 0.0
 
     def confirm(self, customer_debt=0):
+        if self.status == "CONFIRMED":
+            raise ValueError("already confirmed")
         if self.total <= 0:
             raise ValueError("total must be positive")
         if customer_debt > 0:

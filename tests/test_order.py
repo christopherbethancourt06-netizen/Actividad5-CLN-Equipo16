@@ -115,3 +115,13 @@ def test_prioridad_total_invalido_antes_que_deuda():
     # El contrato del código valida primero el total: con total 0 y deuda se informa ValueError.
     with pytest.raises(ValueError):
         Order(0).confirm(customer_debt=100)
+
+
+# ---------------------------------------------------------------- E3: TDD (Red → Green → Refactor)
+
+
+def test_cannot_confirm_twice():
+    order = Order(100)
+    order.confirm()
+    with pytest.raises(ValueError, match="already confirmed"):
+        order.confirm()

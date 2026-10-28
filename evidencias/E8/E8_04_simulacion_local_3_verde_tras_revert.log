@@ -1,0 +1,27 @@
+# Registro: 2026-10-27 21:32:00 CST  |  dir: /tmp/claude-0/-home-claude/202d546c-e11e-5c85-b6f3-097d1a558a76/scratchpad/e8  |  Python 3.13.18
+$ bash herramientas/ci_local.sh
+
+==> Ruff
+All checks passed!
+
+==> Pytest con cobertura mínima del 80 %
+.....................................................................x   [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+src/__init__.py          0      0   100%
+src/application.py       8      0   100%
+src/domain.py           24      0   100%
+src/repository.py       18      0   100%
+src/security.py          8      0   100%
+--------------------------------------------------
+TOTAL                   58      0   100%
+Required test coverage of 80% reached. Total coverage: 100.00%
+69 passed, 1 xfailed in 0.43s
+
+==> Compilar src/
+
+PIPELINE LOCAL: TODAS LAS ETAPAS APROBADAS
+[código de salida: 0]

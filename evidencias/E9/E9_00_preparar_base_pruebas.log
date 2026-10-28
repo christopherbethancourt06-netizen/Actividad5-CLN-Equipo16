@@ -1,0 +1,10 @@
+# Registro: 2026-10-27 21:21:58 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python scripts/preparar_base_de_pruebas.py
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+Base de pruebas lista: {'host': '127.0.0.1', 'puerto': 5432, 'base': 'eventosnova_test', 'usuario': 'eventosnova', 'creada': True}
+[código de salida: 0]

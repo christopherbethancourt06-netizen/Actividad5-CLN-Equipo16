@@ -1,0 +1,10 @@
+# Registro: 2026-10-27 21:23:55 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ sh -c python -m coverage report | tail -4 && python -m coverage json -q -o /tmp/cov_pia_base.json && python scripts/verificar_cobertura.py /tmp/cov_pia_base.json --minimo 80
+src/paquete_pia/lector.py                                       99      5     50      2  95.3%   74-76, 79-80, 143->exit
+src/paquete_pia/manifiesto.py                                   58      3     24      2  93.9%   40, 73-74
+--------------------------------------------------------------------------------------------------------
+TOTAL                                                         5443     63   1060     39  98.4%
+Cobertura de sentencias: 98.84 % (5380 de 5443; sin cubrir 63)
+Cobertura de ramas:      95.94 % (1017 de 1060)
+OK: cumple el mínimo de 80 %.
+[código de salida: 0]

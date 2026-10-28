@@ -1,0 +1,33 @@
+# Registro: 2026-10-27 21:19:56 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_security.py -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 20 items
+
+tests/test_security.py::test_owner_within_24h PASSED                     [  5%]
+tests/test_security.py::test_stranger_denied PASSED                      [ 10%]
+tests/test_security.py::test_shipped_denied_even_admin PASSED            [ 15%]
+tests/test_security.py::test_expired_denied PASSED                       [ 20%]
+tests/test_security.py::test_admin_cancela_pedido_new_de_otro_usuario PASSED [ 25%]
+tests/test_security.py::test_propietario_exactamente_a_las_24_horas_se_rechaza PASSED [ 30%]
+tests/test_security.py::test_propietario_un_segundo_antes_de_24_horas_se_permite PASSED [ 35%]
+tests/test_security.py::test_pedido_enviado_no_lo_cancela_ni_el_propietario_dentro_de_plazo PASSED [ 40%]
+tests/test_security.py::test_tercero_no_administrador_tampoco_dentro_de_24h PASSED [ 45%]
+tests/test_security.py::test_matriz_autorizacion[SEG-01] PASSED          [ 50%]
+tests/test_security.py::test_matriz_autorizacion[SEG-02] PASSED          [ 55%]
+tests/test_security.py::test_matriz_autorizacion[SEG-03] PASSED          [ 60%]
+tests/test_security.py::test_matriz_autorizacion[SEG-04] PASSED          [ 65%]
+tests/test_security.py::test_matriz_autorizacion[SEG-05] PASSED          [ 70%]
+tests/test_security.py::test_matriz_autorizacion[SEG-06] PASSED          [ 75%]
+tests/test_security.py::test_matriz_autorizacion[SEG-07] PASSED          [ 80%]
+tests/test_security.py::test_matriz_autorizacion[SEG-08] PASSED          [ 85%]
+tests/test_security.py::test_matriz_autorizacion[SEG-09] PASSED          [ 90%]
+tests/test_security.py::test_matriz_autorizacion[SEG-10] PASSED          [ 95%]
+tests/test_security.py::test_sin_now_usa_la_hora_actual_del_modulo PASSED [100%]
+
+============================== 20 passed in 0.04s ==============================
+[código de salida: 0]

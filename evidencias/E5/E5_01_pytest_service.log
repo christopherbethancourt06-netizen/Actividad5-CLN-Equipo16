@@ -1,0 +1,23 @@
+# Registro: 2026-10-27 21:19:35 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_service.py -v -rxX
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 8 items
+
+tests/test_service.py::test_gateway_approved PASSED                      [ 12%]
+tests/test_service.py::test_gateway_rejected PASSED                      [ 25%]
+tests/test_service.py::test_pago_aprobado_vip_200_cobra_170 PASSED       [ 37%]
+tests/test_service.py::test_pago_rechazado_vip_200_intenta_cobrar_170_y_lanza_runtimeerror PASSED [ 50%]
+tests/test_service.py::test_timeout_de_la_pasarela_se_propaga_sin_reintentos PASSED [ 62%]
+tests/test_service.py::test_no_se_llama_a_la_pasarela_si_el_dominio_rechaza_el_total PASSED [ 75%]
+tests/test_service.py::test_no_se_cobra_dos_veces_un_pedido_ya_confirmado PASSED [ 87%]
+tests/test_service.py::test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza XFAIL [100%]
+
+=========================== short test summary info ============================
+XFAIL tests/test_service.py::test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza - Riesgo documentado: checkout() confirma el pedido ANTES de conocer el resultado del pago; con el pago rechazado el pedido queda CONFIRMED.
+========================= 7 passed, 1 xfailed in 0.04s =========================
+[código de salida: 0]

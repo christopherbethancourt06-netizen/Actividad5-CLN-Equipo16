@@ -29,3 +29,6 @@ htmlcov/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Reportes HTML del PIA (se entregan en el ZIP, no se versionan)
+pia_eventos_nova/htmlcov_*/

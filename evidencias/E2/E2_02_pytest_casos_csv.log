@@ -1,0 +1,28 @@
+# Registro: 2026-10-27 21:20:16 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_casos_csv.py -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 15 items
+
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP01] PASSED           [  6%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP02] PASSED           [ 13%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP03] PASSED           [ 20%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP04] PASSED           [ 26%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP05] PASSED           [ 33%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP06] PASSED           [ 40%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP07] PASSED           [ 46%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP08] PASSED           [ 53%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP09] PASSED           [ 60%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP10] PASSED           [ 66%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP11] PASSED           [ 73%]
+tests/test_casos_csv.py::test_confirmar_segun_csv[CP12] PASSED           [ 80%]
+tests/test_casos_csv.py::test_cp13_pago_rechazado_segun_csv PASSED       [ 86%]
+tests/test_casos_csv.py::test_cp14_cp15_commit_y_rollback_segun_csv[CP14-True-True] PASSED [ 93%]
+tests/test_casos_csv.py::test_cp14_cp15_commit_y_rollback_segun_csv[CP15-False-False] PASSED [100%]
+
+============================== 15 passed in 0.27s ==============================
+[código de salida: 0]

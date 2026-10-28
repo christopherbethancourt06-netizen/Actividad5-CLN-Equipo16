@@ -1,0 +1,4 @@
+# Registro: 2026-10-27 21:28:30 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m ruff check tests_u5
+All checks passed!
+[código de salida: 0]

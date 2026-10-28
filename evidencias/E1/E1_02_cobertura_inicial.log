@@ -1,0 +1,36 @@
+# Registro: 2026-10-27 21:14:13 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest --cov=src --cov-report=term-missing --cov-fail-under=80
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collected 13 items
+
+tests/test_order.py .....                                                [ 38%]
+tests/test_repository.py ..                                              [ 53%]
+tests/test_security.py ....                                              [ 84%]
+tests/test_service.py ..                                                 [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+src/__init__.py          0      0   100%
+src/application.py       8      0   100%
+src/domain.py           17      0   100%
+src/repository.py       18      0   100%
+src/security.py          8      1    88%   8
+--------------------------------------------------
+TOTAL                   51      1    98%
+Required test coverage of 80% reached. Total coverage: 98.04%
+============================== 13 passed in 0.35s ==============================
+/usr/local/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f9c3b878f40>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f9c3b9faa70>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+[código de salida: 0]

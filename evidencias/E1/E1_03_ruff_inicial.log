@@ -1,0 +1,141 @@
+# Registro: 2026-10-27 21:14:14 CST  |  dir: lab  |  Python 3.13.18
+$ python -m ruff check src tests
+I001 [*] Import block is un-sorted or un-formatted
+ --> src/domain.py:1:1
+  |
+1 | from dataclasses import dataclass
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2 |
+3 | class CustomerHasDebt(Exception):
+  |
+help: Organize imports
+  |
+2 |
+3 +
+4 | class CustomerHasDebt(Exception):
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> src/repository.py:1:1
+  |
+1 | / from sqlalchemy import Column, Integer, Float, String, create_engine
+2 | | from sqlalchemy.orm import DeclarativeBase, Session
+  | |___________________________________________________^
+3 |
+4 |   class Base(DeclarativeBase):
+  |
+help: Organize imports
+  |
+  - from sqlalchemy import Column, Integer, Float, String, create_engine
+1 + from sqlalchemy import Column, Float, Integer, String, create_engine
+2 | from sqlalchemy.orm import DeclarativeBase, Session
+3 |
+4 +
+5 | class Base(DeclarativeBase):
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> src/security.py:1:1
+  |
+1 | from datetime import datetime, timedelta, timezone
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2 |
+3 | def can_cancel(status, owner_id, user_id, is_admin, created_at, now=None):
+  |
+help: Organize imports
+  |
+2 |
+3 +
+4 | def can_cancel(status, owner_id, user_id, is_admin, created_at, now=None):
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/test_order.py:1:1
+  |
+1 | / import pytest
+2 | | from src.domain import Order, CustomerHasDebt
+  | |_____________________________________________^
+3 |
+4 |   def test_vip_discount():
+  |
+help: Organize imports
+  |
+1 | import pytest
+  - from src.domain import Order, CustomerHasDebt
+2 |
+3 + from src.domain import CustomerHasDebt, Order
+4 +
+5 +
+6 | def test_vip_discount():
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/test_repository.py:1:1
+  |
+1 | / from sqlalchemy.orm import Session
+2 | | from sqlalchemy import select
+3 | | from src.domain import Order
+4 | | from src.repository import make_engine, SqlOrderRepository, OrderRow
+  | |____________________________________________________________________^
+5 |
+6 |   def test_repository_commit():
+  |
+help: Organize imports
+  |
+1 + from sqlalchemy import select
+2 | from sqlalchemy.orm import Session
+  - from sqlalchemy import select
+3 +
+4 | from src.domain import Order
+  - from src.repository import make_engine, SqlOrderRepository, OrderRow
+5 + from src.repository import OrderRow, SqlOrderRepository, make_engine
+6 +
+7 |
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/test_security.py:1:1
+  |
+1 | / from datetime import datetime, timedelta, timezone
+2 | | from src.security import can_cancel
+  | |___________________________________^
+3 |
+4 |   def test_owner_within_24h():
+  |
+help: Organize imports
+  |
+1 | from datetime import datetime, timedelta, timezone
+2 +
+3 | from src.security import can_cancel
+4 |
+5 +
+6 | def test_owner_within_24h():
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/test_service.py:1:1
+  |
+1 | / from unittest.mock import Mock
+2 | | import pytest
+3 | | from src.domain import Order
+4 | | from src.application import OrderService
+  | |________________________________________^
+5 |
+6 |   def test_gateway_approved():
+  |
+help: Organize imports
+  |
+1 | from unittest.mock import Mock
+2 +
+3 | import pytest
+  - from src.domain import Order
+4 +
+5 | from src.application import OrderService
+6 + from src.domain import Order
+7 +
+8 |
+  |
+
+Found 7 errors.
+[*] 7 fixable with the `--fix` option.
+[código de salida: 1]

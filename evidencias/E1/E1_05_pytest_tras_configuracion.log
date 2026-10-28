@@ -1,0 +1,5 @@
+# Registro: 2026-10-27 21:18:14 CST  |  dir: lab  |  Python 3.13.18
+$ env PYTHONSAFEPATH=1 pytest -q
+.............                                                            [100%]
+13 passed in 0.20s
+[código de salida: 0]

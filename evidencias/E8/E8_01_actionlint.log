@@ -1,0 +1,9 @@
+# Registro: 2026-10-27 21:20:37 CST  |  dir: lab  |  Python 3.13.18
+$ /home/claude/work/tools/actionlint -verbose .github/workflows/ci.yml
+verbose: Linting .github/workflows/ci.yml
+verbose: Using project at /home/claude/work/lab
+verbose: Found 0 parse errors in 0 ms for .github/workflows/ci.yml
+verbose: Rule "shellcheck" was disabled: exec: "shellcheck": executable file not found in $PATH
+verbose: Rule "pyflakes" was disabled: exec: "pyflakes": executable file not found in $PATH
+verbose: Found total 0 errors in 0 ms for .github/workflows/ci.yml
+[código de salida: 0]

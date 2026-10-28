@@ -1,0 +1,29 @@
+# Registro: 2026-10-27 21:18:28 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_order.py -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 16 items
+
+tests/test_order.py::test_vip_discount PASSED                            [  6%]
+tests/test_order.py::test_regular_no_discount PASSED                     [ 12%]
+tests/test_order.py::test_customer_debt PASSED                           [ 18%]
+tests/test_order.py::test_invalid_total[0] PASSED                        [ 25%]
+tests/test_order.py::test_invalid_total[-1] PASSED                       [ 31%]
+tests/test_order.py::test_pedido_vip_200_descuento_30_cobro_170 PASSED   [ 37%]
+tests/test_order.py::test_pedido_regular_200_sin_descuento_cobro_200 PASSED [ 43%]
+tests/test_order.py::test_pedido_vip_1000_descuento_150_cobro_850 PASSED [ 50%]
+tests/test_order.py::test_total_cero_se_rechaza_y_el_pedido_sigue_new PASSED [ 56%]
+tests/test_order.py::test_total_negativo_se_rechaza_y_el_pedido_sigue_new PASSED [ 62%]
+tests/test_order.py::test_cliente_con_deuda_no_confirma_y_no_aplica_descuento PASSED [ 68%]
+tests/test_order.py::test_limite_total_minimo_positivo_vip PASSED        [ 75%]
+tests/test_order.py::test_limite_deuda_exactamente_cero_permite_confirmar PASSED [ 81%]
+tests/test_order.py::test_limite_deuda_minima_positiva_bloquea PASSED    [ 87%]
+tests/test_order.py::test_limite_redondeo_descuento_vip_99_99 PASSED     [ 93%]
+tests/test_order.py::test_prioridad_total_invalido_antes_que_deuda PASSED [100%]
+
+============================== 16 passed in 0.04s ==============================
+[código de salida: 0]

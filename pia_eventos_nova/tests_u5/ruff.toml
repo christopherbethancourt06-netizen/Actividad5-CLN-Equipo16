@@ -1,0 +1,11 @@
+# Configuración de Ruff solo para las pruebas U5 (el repositorio del PIA no tenía configuración propia de Ruff).
+line-length = 130
+
+[lint]
+# El dominio de Eventos Nova usa fechas locales sin zona horaria (decisión TP-06: America/Mexico_City). Las pruebas deben
+# construir las fechas igual que el dominio para no mezclar fechas con y sin zona.
+ignore = ["DTZ001"]
+
+[lint.isort]
+known-first-party = ["domain", "application", "infrastructure", "api"]
+known-local-folder = ["apoyo_u5", "apoyo_flujo", "apoyo_bd"]

@@ -1,0 +1,52 @@
+# Registro: 2026-10-27 21:18:08 CST  |  dir: lab_base  |  Python 3.13.18
+$ env PYTHONSAFEPATH=1 pytest -q
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_order.py _____________________
+ImportError while importing test module '/home/claude/work/lab_base/tests/test_order.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_order.py:2: in <module>
+    from src.domain import Order, CustomerHasDebt
+E   ModuleNotFoundError: No module named 'src'
+__________________ ERROR collecting tests/test_repository.py ___________________
+ImportError while importing test module '/home/claude/work/lab_base/tests/test_repository.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_repository.py:3: in <module>
+    from src.domain import Order
+E   ModuleNotFoundError: No module named 'src'
+___________________ ERROR collecting tests/test_security.py ____________________
+ImportError while importing test module '/home/claude/work/lab_base/tests/test_security.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_security.py:2: in <module>
+    from src.security import can_cancel
+E   ModuleNotFoundError: No module named 'src'
+____________________ ERROR collecting tests/test_service.py ____________________
+ImportError while importing test module '/home/claude/work/lab_base/tests/test_service.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_service.py:3: in <module>
+    from src.domain import Order
+E   ModuleNotFoundError: No module named 'src'
+=========================== short test summary info ============================
+ERROR tests/test_order.py
+ERROR tests/test_repository.py
+ERROR tests/test_security.py
+ERROR tests/test_service.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!!
+4 errors in 0.41s
+[código de salida: 2]

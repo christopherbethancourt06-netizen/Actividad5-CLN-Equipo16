@@ -1,0 +1,41 @@
+# Registro: 2026-10-27 21:31:55 CST  |  dir: /tmp/claude-0/-home-claude/202d546c-e11e-5c85-b6f3-097d1a558a76/scratchpad/e8  |  Python 3.13.18
+$ bash herramientas/ci_local.sh
+
+==> Ruff
+All checks passed!
+
+==> Pytest con cobertura mínima del 80 %
+................................................................F....x   [100%]
+=================================== FAILURES ===================================
+_____________________ test_pago_aprobado_vip_200_cobra_170 _____________________
+
+    def test_pago_aprobado_vip_200_cobra_170():
+        # Arrange
+        gateway = pasarela(True)
+        order = Order(200, vip=True)
+        # Act
+        cobrado = OrderService(gateway).checkout(order)
+        # Assert
+>       assert cobrado == 171  # FALLO CONTROLADO TEMPORAL (E8)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       assert 170.0 == 171
+
+tests/test_service.py:49: AssertionError
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+src/__init__.py          0      0   100%
+src/application.py       8      0   100%
+src/domain.py           24      0   100%
+src/repository.py       18      0   100%
+src/security.py          8      0   100%
+--------------------------------------------------
+TOTAL                   58      0   100%
+Required test coverage of 80% reached. Total coverage: 100.00%
+=========================== short test summary info ============================
+FAILED tests/test_service.py::test_pago_aprobado_vip_200_cobra_170 - assert 1...
+1 failed, 68 passed, 1 xfailed in 0.46s
+PIPELINE LOCAL: FALLÓ (pytest)
+[código de salida: 1]

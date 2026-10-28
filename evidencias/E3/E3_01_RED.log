@@ -1,0 +1,27 @@
+# Registro: 2026-10-27 21:18:33 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_order.py::test_cannot_confirm_twice -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/work/lab
+configfile: pyproject.toml
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 1 item
+
+tests/test_order.py::test_cannot_confirm_twice FAILED                    [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_cannot_confirm_twice ___________________________
+
+    def test_cannot_confirm_twice():
+        order = Order(100)
+        order.confirm()
+>       with pytest.raises(ValueError, match="already confirmed"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_order.py:126: Failed
+=========================== short test summary info ============================
+FAILED tests/test_order.py::test_cannot_confirm_twice - Failed: DID NOT RAISE...
+============================== 1 failed in 0.06s ===============================
+[código de salida: 1]

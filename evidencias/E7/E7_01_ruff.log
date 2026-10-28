@@ -1,0 +1,4 @@
+# Registro: 2026-10-27 21:32:32 CST  |  dir: lab  |  Python 3.13.18
+$ python -m ruff check src tests
+All checks passed!
+[código de salida: 0]

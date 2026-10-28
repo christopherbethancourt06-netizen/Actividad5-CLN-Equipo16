@@ -125,3 +125,19 @@ def test_cannot_confirm_twice():
     order.confirm()
     with pytest.raises(ValueError, match="already confirmed"):
         order.confirm()
+
+
+def test_segundo_intento_no_altera_descuento_ni_estado():
+    order = Order(200, vip=True)
+    order.confirm()
+    with pytest.raises(ValueError, match="already confirmed"):
+        order.confirm()
+    assert order.discount == 30
+    assert order.status == "CONFIRMED"
+
+
+def test_pedido_cargado_como_confirmed_no_se_reconfirma():
+    # Escenario CP08 de los datos del profesor: el pedido 8 ya llega con estado CONFIRMED.
+    order = Order(250, status="CONFIRMED")
+    with pytest.raises(ValueError, match="already confirmed"):
+        order.confirm()

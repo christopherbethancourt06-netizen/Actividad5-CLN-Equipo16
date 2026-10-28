@@ -1,0 +1,129 @@
+# Registro: 2026-10-28 15:13:34 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m coverage run -m unittest discover -s tests
+/home/claude/work/pia/.venv/lib/python3.13/site-packages/coverage/core.py:108: CoverageWarning: Couldn't import C tracer: No module named 'coverage.tracer' (no-ctracer); see https://coverage.readthedocs.io/en/7.16.2/messages.html#warning-no-ctracer
+  warn(f"Couldn't import C tracer: {IMPORT_ERROR}", slug="no-ctracer", once=True)
+....................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+.......................................................................ERROR [eventosnova.trabajador] Falló un ciclo de despacho del Outbox
+Traceback (most recent call last):
+  File "/home/claude/work/pia/Eventosnova/tests/../src/infrastructure/persistencia/trabajador_outbox.py", line 27, in ejecutar
+    procesados = contenedor.despachador.despachar()
+  File "/usr/local/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+infrastructure.persistencia.errores.ErrorDePersistencia: x
+.WARNI [eventosnova.api] Violación de restricción: fk_secreta (tabla tabla_interna)
+WARNI [eventosnova.api] Dato no almacenable: integer out of range
+ERROR [eventosnova.api] Base de datos no disponible: password authentication failed for user x
+ERROR [eventosnova.api] Error de persistencia: algo interno
+.WARNI [eventosnova.api] Violación de restricción: fk_secreta (tabla tabla_interna)
+WARNI [eventosnova.api] Dato no almacenable: integer out of range
+ERROR [eventosnova.api] Base de datos no disponible: password authentication failed for user x
+ERROR [eventosnova.api] Error de persistencia: algo interno
+..................................................................................WARNI [eventosnova.api] Conflicto de concurrencia: El agregado evento EV-1 cambió desde que se leyó
+.WARNI [eventosnova.api] Conflicto de concurrencia: El agregado estado_cuenta EC-69c339d0-d836-4172-b6e0-33ad0d33a863 cambió desde que se leyó (versión 0) o ya no existe.
+.............................................................................................................................................................................................................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+............INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+.INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+...........INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+....................................................................................................................................................................................................................................................................................................................................................................................................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+.INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0001 -> , Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+...INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+..............F..............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+======================================================================
+FAIL: test_el_archivo_coincide_con_la_api_actual (test_openapi_exportada.OpenApiExportada.test_el_archivo_coincide_con_la_api_actual)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/work/pia/Eventosnova/tests/test_openapi_exportada.py", line 13, in test_el_archivo_coincide_con_la_api_actual
+    self.assertEqual(f.read(), modulo.generar())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '{\n [939 chars]    "type": "string"\n              },\n      [112751 chars]n}\n' != '{\n [939 chars]    "pattern": "^(?!^[-+.]*$)[+-]?0*\\\\d*\\\\[113319 chars]n}\n'
+
+----------------------------------------------------------------------
+Ran 1306 tests in 87.789s
+
+FAILED (failures=1)
+[código de salida: 1]

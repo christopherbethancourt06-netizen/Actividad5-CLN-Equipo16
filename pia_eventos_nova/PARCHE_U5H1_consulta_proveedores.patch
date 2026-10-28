@@ -1,0 +1,32 @@
+--- a/src/domain/solicitudes.py
++++ b/src/domain/solicitudes.py
+@@ -437,6 +437,17 @@
+         return _condicion_temporal(SERVICIO_ADICIONAL_EN_PLAZO, SituacionTemporalSolicitud(
+             evento_iniciado, self.elegibilidad_obtenida, AnticipacionSolicitud(ahora, self.anticipacion.fecha_evento)))
+ 
++    def motivo_rechazo_registro_disponibilidad(self) -> Optional[str]:
++        """U5-H1 (CA-083): indica, sin modificar la solicitud, si ya no admite registrar disponibilidad; así el servicio de
++        aplicación puede rechazar la operación ANTES de consultar a los proveedores. Usa la misma tabla de la máquina de
++        estados y el mismo mensaje que registrar_disponibilidad(); devuelve None si la búsqueda puede continuar."""
++        acciones = (_AS.REGISTRAR_DISPONIBILIDAD_CON_PROVEEDOR, _AS.REGISTRAR_DISPONIBILIDAD_SIN_PROVEEDOR,
++                    _AS.REGISTRAR_DISPONIBILIDAD_FUERA_DE_PLAZO)
++        if any(MAQUINA_SERVICIO_ADICIONAL.permite(self.estado, a) or MAQUINA_SERVICIO_ADICIONAL.es_repeticion(self.estado, a)
++               for a in acciones):
++            return None
++        return MAQUINA_SERVICIO_ADICIONAL.mensaje_rechazo(self.estado, _AS.REGISTRAR_DISPONIBILIDAD_CON_PROVEEDOR)
++
+     @property
+     def importe_a_cobrar(self) -> Optional[Importe]:
+         """H-06 (BN-004, GL-016, CA-073): el importe del servicio adicional es el costo establecido por el proveedor
+--- a/src/application/servicios.py
++++ b/src/application/servicios.py
+@@ -695,6 +695,9 @@
+         rechazo = self._rechazo_por_estado_del_evento(ev, ahora)
+         if rechazo:
+             return Resultado.rechazo(rechazo)
++        rechazo = s.motivo_rechazo_registro_disponibilidad()      # U5-H1: sin consulta externa si la búsqueda ya no procede
++        if rechazo:
++            return Resultado.rechazo(rechazo)
+         elegida = self._buscar_proveedor_servicio_adicional(s, ev, proveedores_actuales)    # fuera de la transacción
+         from domain.valores import DisponibilidadProveedor
+         try:

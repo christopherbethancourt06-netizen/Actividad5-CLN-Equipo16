@@ -28,15 +28,15 @@ def colorear(linea: str) -> str:
     e = html.escape(linea)
     if linea.startswith('# Registro:'):
         return f'<span class="meta">{e}</span>'
-    if linea.startswith('$ ') or linea.startswith('==> '):
+    if linea.startswith(('$ ', '==> ')):
         return f'<span class="cmd">{e}</span>'
     if any(k in linea for k in ('FAILED', 'Error', 'ERROR', 'FALLÓ', 'error:', 'DID NOT RAISE', 'código de salida: 1',
-                                'código de salida: 2')) or linea.startswith('-   ') or linea.startswith('- '):
+                                'código de salida: 2')) or linea.startswith(('-   ', '- ')):
         return f'<span class="bad">{e}</span>'
     if any(k in linea for k in ('XFAIL', 'xfailed', 'Warning')):
         return f'<span class="warn">{e}</span>'
     if any(k in linea for k in ('PASSED', ' passed', 'All checks passed', 'APROBADAS', 'reached', 'OK: cumple',
-                                'código de salida: 0')) or linea.startswith('+   ') or linea.startswith('+ '):
+                                'código de salida: 0')) or linea.startswith(('+   ', '+ ')):
         return f'<span class="ok">{e}</span>'
     return e
 

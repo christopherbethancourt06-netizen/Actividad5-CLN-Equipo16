@@ -26,8 +26,8 @@ LAB = [
     ('LAB-04', 'Descuento VIP 15 %', 'Pedido NEW VIP', 'total 1000, VIP (CP06)', 'confirm()',
      'Descuento 150; cobro 850', 'Unitaria (dominio)', 'Éxito',
      'tests/test_order.py::test_pedido_vip_1000_descuento_150_cobro_850', 'E2'),
-    ('LAB-05', 'Persistencia con commit', 'Base SQLite en memoria vacía', 'id 2, total 250', 'save() + commit(); '
-     'lectura en sesión nueva', 'Registro id 2, total 250, estado NEW visible', 'Integración (SQLAlchemy)', 'Éxito',
+    ('LAB-05', 'Persistencia con commit', 'Base SQLite en memoria vacía', 'id 2, total 250',
+     'save() + commit(); lectura en sesión nueva', 'Registro id 2, total 250, estado NEW visible', 'Integración (SQLAlchemy)', 'Éxito',
      'tests/test_repository.py::test_guardar_pedido_id_2_total_250_commit_y_leer_en_sesion_nueva', 'E4'),
     ('LAB-06', 'Cobro con pasarela (aprobado)', 'Mock de pasarela responde True', 'total 200, VIP', 'checkout()',
      'Devuelve 170; charge() llamado una vez con 170; CONFIRMED', 'Unitaria con mock', 'Éxito',
@@ -90,7 +90,7 @@ LAB = [
      'Límite', 'tests/test_casos_csv.py::test_confirmar_segun_csv[CP08]', 'E3'),
     ('LAB-27', 'Riesgo: confirmar antes del pago', 'Mock de pasarela responde False', 'total 200, VIP',
      'checkout()', 'El pedido NO debería quedar CONFIRMED si el pago se rechaza', 'Unitaria con mock (riesgo)',
-     'Error (riesgo documentado)',
+     'Riesgo documentado',
      'tests/test_service.py::test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza', 'E5'),
 ]
 
@@ -109,8 +109,8 @@ FI = 'tests_u5/test_u5_integracion_persistencia_y_mocks.py'
 PIA = [
     ('PIA-01', R1, 'BN-004, SE-004, GL-015', 'US-025; CA-073, CA-075', 'Contratación confirmada; evento 20/11/2026 18:00',
      'Solicitud el 10/11/2026 09:00 (10 días)', 'Coordinador', 'Registrar solicitud y consultar disponibilidad',
-     'Registrada sin motivo; consulta a proveedores; Pendiente de aprobación del Cliente; importe = costo del proveedor '
-     '(1 500.00), sin cargo propio', 'Integración de servicios (memoria) + mock', 'Éxito',
+     ('Registrada sin motivo; consulta a proveedores; Pendiente de aprobación del Cliente; importe = costo del proveedor '
+      '(1 500.00), sin cargo propio'), 'Integración de servicios (memoria) + mock', 'Éxito',
      f'{F1}::test_pia01_solicitud_con_diez_dias_procede_y_consulta_proveedores'),
     ('PIA-02', R1, 'BN-004, SE-004, GL-015', 'US-025; CA-083', 'Contratación confirmada',
      'Solicitud el 15/11/2026 23:59 (5 días naturales por fecha)', 'Coordinador', 'Registrar solicitud',
@@ -122,7 +122,8 @@ PIA = [
      f'{F1}::test_pia03_cuatro_dias_no_procede_y_no_se_buscan_proveedores'),
     ('PIA-03b', R1, 'BN-004, SE-004', 'US-025; CA-083', 'Solicitud ya No procedente por plazo',
      'Reintento de evaluar disponibilidad', 'Coordinador', 'evaluar_disponibilidad_servicio_adicional()',
-     'Se rechaza y NO se consulta a proveedores', 'Integración de servicios + mock (hallazgo)', 'Error (hallazgo U5-H1)',
+     ('Se rechaza con el mismo mensaje de antes y NO se consulta a proveedores (hallazgo U5-H1, corregido el '
+      '28/10/2026)'), 'Integración de servicios + mock (corrección U5-H1)', 'Error',
      f'{F1}::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar'),
     ('PIA-04', R1, 'BN-004, SE-004, GL-015', 'US-025; CA-083', 'Evento cancelado el 12/11/2026',
      'Solicitud el 17/11/2026 (3 días)', 'Coordinador', 'Registrar solicitud',
@@ -147,12 +148,12 @@ PIA = [
      'Límite', f'{F2}::test_pia08_seguimiento_solo_despues_del_limite_exclusivo_de_tres_dias_habiles'),
     ('PIA-09', R2, 'BN-009, SE-010, GL-060', 'US-010; CA-021', 'Contacto registrado el 07/10/2026 09:00; sin pago',
      'Cierre en contacto + 24 h y en + 24 h 1 s', 'Coordinador', 'Cerrar la contratación por falta de anticipo',
-     'En + 24 h exactas se rechaza (límite inclusivo); después: contrato Cerrado sin confirmar y evento Cerrado sin '
-     'contratación (no Cancelado)', 'Integración de servicios (memoria)', 'Error',
+     ('En + 24 h exactas se rechaza (límite inclusivo); después: contrato Cerrado sin confirmar y evento Cerrado sin '
+      'contratación (no Cancelado)'), 'Integración de servicios (memoria)', 'Error',
      f'{F2}::test_pia09_sin_anticipo_24_horas_despues_del_contacto_se_cierra_sin_contratacion'),
     ('PIA-10', R3, 'BN-003, SE-003, GL-020', 'US-024; CA-061, CA-063', 'Contratación confirmada',
-     'Cambio el 13/11/2026 18:00 (7 días); costo proveedor 800.00; tarifa ejemplo 500.00', 'Coordinador / Cliente / '
-     'Administración', 'Registrar, evaluar, aprobar, autorizar, anexo y solicitud de pago',
+     'Cambio el 13/11/2026 18:00 (7 días); costo proveedor 800.00; tarifa ejemplo 500.00', 
+     'Coordinador / Cliente / Administración', 'Registrar, evaluar, aprobar, autorizar, anexo y solicitud de pago',
      'Sin cargo tardío; solo la obligación del costo del proveedor', 'Integración de servicios (memoria)', 'Límite',
      f'{F3}::test_pia10_limite_siete_dias_exactos_sin_cargo_tardio'),
     ('PIA-11', R3, 'BN-003, SE-005, GL-025', 'US-024; CA-062, CA-063', 'Contratación confirmada',
@@ -197,7 +198,7 @@ PIA = [
     ('PIA-20', RI + ' (R2)', 'BN-009', 'CA-019', 'Verificador de pagos simulado (Mock) responde False y luego True',
      'Anticipo 3 000.00, comprobante C-ANT', 'Administración', 'Registrar pago y volver a verificar',
      'Primero queda Registrado y no se confirma; tras la verificación se confirma; el mock recibe (C-ANT, 3 000.00)',
-     'Unitaria/integración con mock', 'Error → Éxito',
+     'Unitaria/integración con mock', 'Error',
      f'{FI}::test_pia20_verificador_de_pagos_simulado_rechaza_y_luego_aprueba'),
     ('PIA-21', RI + ' (R1)', 'SE-004', 'CA-073, CA-074', 'Proveedor actual PV-1 no disponible; alternativa PV-9 disponible',
      'Solicitud a 10 días', 'Coordinador', 'Evaluar disponibilidad',
@@ -227,6 +228,15 @@ def resultados(xml: Path) -> dict:
     return salida
 
 
+def fecha(xml: Path) -> str:
+    """Fecha y hora de la ejecución registrada en el JUnit XML (atributo timestamp de pytest)."""
+    if not xml.exists():
+        return ''
+    suite = next(ET.parse(xml).getroot().iter('testsuite'), None)
+    marca = suite.get('timestamp', '') if suite is not None else ''
+    return marca[:16].replace('T', ' ')
+
+
 def real(esperado, estado, detalle):
     if estado == 'PASSED':
         return f'Coincide con el esperado: {esperado}'
@@ -238,7 +248,7 @@ def real(esperado, estado, detalle):
 
 
 def main():
-    lab_res = resultados(JUNIT_LAB)
+    lab_res, lab_fecha = resultados(JUNIT_LAB), fecha(JUNIT_LAB)
     filas = []
     for (id_, regla, cond, entrada, accion, esperado, tipo, cat, test, ev) in LAB:
         estado, detalle = lab_res.get(test, ('Pendiente', ''))
@@ -246,10 +256,11 @@ def main():
                       'Condiciones iniciales': cond, 'Datos de entrada': entrada, 'Acción ejecutada': accion,
                       'Resultado esperado': esperado, 'Resultado real': real(esperado, estado, detalle),
                       'Tipo de prueba': tipo, 'Categoría': cat, 'Estado de ejecución': estado,
+                      'Fecha de ejecución': lab_fecha if estado != 'Pendiente' else '',
                       'Test automatizado': test, 'Evidencia': ev})
     escribir(RAIZ / 'matriz_pruebas_base.csv', filas)
 
-    pia_res = {k.replace('tests_u5/', 'tests_u5/'): v for k, v in resultados(JUNIT_PIA).items()}
+    pia_res, pia_fecha = resultados(JUNIT_PIA), fecha(JUNIT_PIA)
     filas = []
     for (id_, regla, req, ca, pre, entrada, rol, accion, esperado, tipo, cat, test) in PIA:
         estado, detalle = pia_res.get(test, ('Pendiente', ''))
@@ -257,7 +268,8 @@ def main():
                       'Requisito de origen': req, 'Historia / criterio de aceptación': ca, 'Precondiciones': pre,
                       'Entrada': entrada, 'Rol': rol, 'Acción ejecutada': accion, 'Resultado esperado': esperado,
                       'Resultado real': real(esperado, estado, detalle), 'Tipo de prueba': tipo, 'Categoría': cat,
-                      'Test asociado': 'pia_eventos_nova/' + test, 'Estado de ejecución': estado, 'Evidencia': 'E9'})
+                      'Test asociado': 'pia_eventos_nova/Eventosnova/' + test, 'Estado de ejecución': estado,
+                      'Fecha de ejecución': pia_fecha if estado != 'Pendiente' else '', 'Evidencia': 'E9'})
     escribir(RAIZ / 'matriz_pruebas_PIA.csv', filas)
 
 

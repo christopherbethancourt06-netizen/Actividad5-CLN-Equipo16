@@ -1,0 +1,34 @@
+# Registro: 2026-10-28 15:15:18 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m pytest tests_u5 -v -rxX -p no:cacheprovider --junitxml=/home/claude/work/lab/evidencias/E9/junit_pia_u5.xml
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/pia/.venv/bin/python
+rootdir: /home/claude/work/pia/Eventosnova
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 22 items
+
+tests_u5/test_u5_integracion_persistencia_y_mocks.py::test_pia17_anticipo_del_40_por_ciento_persiste_y_se_lee_tras_reiniciar PASSED [  4%]
+tests_u5/test_u5_integracion_persistencia_y_mocks.py::test_pia18_solicitud_no_procedente_por_plazo_persiste_con_su_motivo PASSED [  9%]
+tests_u5/test_u5_integracion_persistencia_y_mocks.py::test_pia19_rollback_de_la_unidad_de_trabajo_no_deja_rastro_y_commit_si PASSED [ 13%]
+tests_u5/test_u5_integracion_persistencia_y_mocks.py::test_pia20_verificador_de_pagos_simulado_rechaza_y_luego_aprueba PASSED [ 18%]
+tests_u5/test_u5_integracion_persistencia_y_mocks.py::test_pia21_consulta_primero_a_proveedores_actuales_y_despues_alternativas PASSED [ 22%]
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia01_solicitud_con_diez_dias_procede_y_consulta_proveedores PASSED [ 27%]
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia02_limite_exactamente_cinco_dias_naturales_procede PASSED [ 31%]
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03_cuatro_dias_no_procede_y_no_se_buscan_proveedores PASSED [ 36%]
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar PASSED [ 40%]
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia04_evento_cancelado_se_informa_primero_aunque_falten_menos_de_cinco_dias PASSED [ 45%]
+tests_u5/test_u5_r2_anticipo.py::test_pia05_anticipo_exacto_del_30_por_ciento_confirma_la_contratacion PASSED [ 50%]
+tests_u5/test_u5_r2_anticipo.py::test_pia06_un_centavo_menos_del_30_por_ciento_no_confirma_hasta_completar PASSED [ 54%]
+tests_u5/test_u5_r2_anticipo.py::test_pia07_anticipo_del_40_por_ciento_cubre_el_requisito_sin_devolucion_ni_abono_al_saldo PASSED [ 59%]
+tests_u5/test_u5_r2_anticipo.py::test_pia08_seguimiento_solo_despues_del_limite_exclusivo_de_tres_dias_habiles PASSED [ 63%]
+tests_u5/test_u5_r2_anticipo.py::test_pia09_sin_anticipo_24_horas_despues_del_contacto_se_cierra_sin_contratacion PASSED [ 68%]
+tests_u5/test_u5_r3_cambio_tardio.py::test_pia10_limite_siete_dias_exactos_sin_cargo_tardio PASSED [ 72%]
+tests_u5/test_u5_r3_cambio_tardio.py::test_pia11_seis_dias_genera_cargo_tardio_y_costo_del_proveedor_por_separado PASSED [ 77%]
+tests_u5/test_u5_r3_cambio_tardio.py::test_pia12_cambio_tardio_no_viable_no_procede_y_no_cobra_el_cargo PASSED [ 81%]
+tests_u5/test_u5_r3_cambio_tardio.py::test_pia13_no_se_admiten_cambios_una_vez_iniciado_el_evento PASSED [ 86%]
+tests_u5/test_u5_r4_pago_servicio_adicional_24h.py::test_pia14_pago_dentro_de_las_24_horas_permite_confirmar_el_servicio PASSED [ 90%]
+tests_u5/test_u5_r4_pago_servicio_adicional_24h.py::test_pia15_limite_pago_en_la_hora_24_exacta_verificado_despues_no_cierra PASSED [ 95%]
+tests_u5/test_u5_r4_pago_servicio_adicional_24h.py::test_pia16_sin_pago_un_segundo_despues_del_limite_se_cierra_por_falta_de_pago PASSED [100%]
+
+--- generated xml file: /home/claude/work/lab/evidencias/E9/junit_pia_u5.xml ---
+============================== 22 passed in 1.00s ==============================
+[código de salida: 0]

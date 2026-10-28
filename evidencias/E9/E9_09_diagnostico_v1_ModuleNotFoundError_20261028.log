@@ -1,0 +1,63 @@
+# Registro: 2026-10-28 15:10:01 CST  |  dir: (copia limpia del ZIP v1)/Actividad5_CLN_Equipo16  |  Python 3.13.18
+$ python -m pytest pia_eventos_nova/tests_u5 -q -p no:cacheprovider
+
+==================================== ERRORS ====================================
+_ ERROR collecting pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py _
+ImportError while importing test module '(copia limpia del ZIP v1)/Actividad5_CLN_Equipo16/pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py:14: in <module>
+    from domain.valores import CausaCierreSolicitud, DisponibilidadProveedor, EstadoContrato
+E   ModuleNotFoundError: No module named 'domain'
+_ ERROR collecting pia_eventos_nova/tests_u5/test_u5_r1_servicio_adicional_plazo.py _
+ImportError while importing test module '(copia limpia del ZIP v1)/Actividad5_CLN_Equipo16/pia_eventos_nova/tests_u5/test_u5_r1_servicio_adicional_plazo.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pia_eventos_nova/tests_u5/test_u5_r1_servicio_adicional_plazo.py:11: in <module>
+    from domain.valores import CausaCierreSolicitud
+E   ModuleNotFoundError: No module named 'domain'
+______ ERROR collecting pia_eventos_nova/tests_u5/test_u5_r2_anticipo.py _______
+ImportError while importing test module '(copia limpia del ZIP v1)/Actividad5_CLN_Equipo16/pia_eventos_nova/tests_u5/test_u5_r2_anticipo.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pia_eventos_nova/tests_u5/test_u5_r2_anticipo.py:10: in <module>
+    from domain.valores import EstadoContrato, EstadoEvento
+E   ModuleNotFoundError: No module named 'domain'
+____ ERROR collecting pia_eventos_nova/tests_u5/test_u5_r3_cambio_tardio.py ____
+ImportError while importing test module '(copia limpia del ZIP v1)/Actividad5_CLN_Equipo16/pia_eventos_nova/tests_u5/test_u5_r3_cambio_tardio.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pia_eventos_nova/tests_u5/test_u5_r3_cambio_tardio.py:9: in <module>
+    from domain.valores import ConceptoPago as CP
+E   ModuleNotFoundError: No module named 'domain'
+_ ERROR collecting pia_eventos_nova/tests_u5/test_u5_r4_pago_servicio_adicional_24h.py _
+ImportError while importing test module '(copia limpia del ZIP v1)/Actividad5_CLN_Equipo16/pia_eventos_nova/tests_u5/test_u5_r4_pago_servicio_adicional_24h.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pia_eventos_nova/tests_u5/test_u5_r4_pago_servicio_adicional_24h.py:9: in <module>
+    from domain.valores import EstadoObligacionPago as EO
+E   ModuleNotFoundError: No module named 'domain'
+=========================== short test summary info ============================
+ERROR pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py
+ERROR pia_eventos_nova/tests_u5/test_u5_r1_servicio_adicional_plazo.py
+ERROR pia_eventos_nova/tests_u5/test_u5_r2_anticipo.py
+ERROR pia_eventos_nova/tests_u5/test_u5_r3_cambio_tardio.py
+ERROR pia_eventos_nova/tests_u5/test_u5_r4_pago_servicio_adicional_24h.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 5 errors during collection !!!!!!!!!!!!!!!!!!!!
+5 errors in 0.19s
+[código de salida: 2]

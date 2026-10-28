@@ -1,0 +1,17 @@
+# Registro: 2026-10-28 15:17:01 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest -q --cov=src --cov-branch --cov-report=term-missing
+.....................................................................x   [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                 Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------------
+src/__init__.py          0      0      0      0   100%
+src/application.py       8      0      2      0   100%
+src/domain.py           24      0      6      0   100%
+src/repository.py       18      0      0      0   100%
+src/security.py          8      0      4      0   100%
+----------------------------------------------------------------
+TOTAL                   58      0     12      0   100%
+69 passed, 1 xfailed in 0.54s
+[código de salida: 0]

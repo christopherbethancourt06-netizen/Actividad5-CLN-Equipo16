@@ -1,0 +1,10 @@
+# Registro: 2026-10-28 15:16:13 CST  |  dir: (carpeta con solo tests_u5)  |  Python 3.13.18
+$ python -m pytest tests_u5 -q -p no:cacheprovider
+ImportError while loading conftest '(carpeta con solo tests_u5)/tests_u5/conftest.py'.
+tests_u5/conftest.py:22: in <module>
+    raise pytest.UsageError(
+E   pytest.UsageError: Las pruebas U5 necesitan el código fuente real de Eventos Nova y no lo encuentran.
+E     Raíz buscada: (carpeta con solo tests_u5)
+E     Archivos que faltan: src/domain/valores.py, src/application/servicios.py, src/infrastructure/composicion.py, tests/apoyo_flujo.py
+E     Solución: copie tests_u5/ a la raíz del repositorio Eventosnova (junto a src/ y tests/) o defina EVENTOSNOVA_RAIZ con la ruta de ese repositorio.
+[código de salida: 4]

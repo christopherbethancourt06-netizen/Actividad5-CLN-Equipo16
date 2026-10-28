@@ -1,37 +1,80 @@
 # Bitácora de uso de IA — Actividad 5 (Unidad 5, CLN) · Equipo 16
 
-**Herramienta:** Claude (Anthropic), en una sesión de trabajo con acceso a archivos y a una terminal (27/10/2026).
-**Forma de uso:** el equipo entregó a la IA **un solo prompt**: el documento de instrucciones «ACTIVIDAD 5 — UNIDAD 5:
-INTEGRACIÓN, PRUEBAS Y CALIDAD» (texto completo en los adjuntos de la sesión), junto con el material de la unidad y el ZIP de
-Eventos Nova. No hubo otras consultas del equipo durante la sesión. Las entradas de abajo registran las **propuestas que hizo la
-IA** dentro de esa sesión, cómo se contrastaron con los requisitos y con la ejecución real, y la decisión final.
+Versión en texto de `docs/BITACORA_IA_ACTIVIDAD5.docx` (28/10/2026). **Estado: borrador para revisión del equipo.**
+Ninguna validación humana está marcada como completada.
 
-**Lo que esta bitácora NO afirma:** no se usó el «prompt sugerido» de la guía del laboratorio; no hubo conversaciones adicionales;
-la revisión humana del equipo sobre cada decisión queda **pendiente** y debe anotarse en la última columna antes de entregar.
+## 1. Herramienta y alcance
 
-Extracto del prompt real (inicio del documento de instrucciones):
-> «Necesito que realices la Actividad 5 de la materia Componentes de Lógica de Negocios, correspondiente a la Unidad 5:
-> Integración, Pruebas y Calidad. No quiero únicamente explicaciones… Necesito que analices los archivos adjuntos, trabajes con el
-> proyecto base proporcionado por el profesor, generes los archivos necesarios, ejecutes las pruebas…»
+- **Herramienta:** Claude (Anthropic), en una sesión con acceso a archivos y a una terminal Linux (Python 3.13.18; PostgreSQL 16 local y efímero).
+- **Sesión 1 (27/10/2026):** desarrollo de la actividad a partir del documento «ACTIVIDAD 5 — UNIDAD 5: INTEGRACIÓN, PRUEBAS Y CALIDAD».
+- **Sesión 2 (28/10/2026):** revisión correctiva a partir del documento «REVISIÓN CORRECTIVA FINAL — ACTIVIDAD 5, EQUIPO 16».
+- No hubo otras consultas. La IA no accedió a GitHub, no ejecutó el pipeline real y trabajó sobre una **copia** del repositorio del PIA.
 
-## Registro
+## 2. Método de revisión
 
-| # | Objetivo | Propuesta de la IA (resumen) | Revisión contra el requisito | Prueba agregada / modificada / descartada | Resultado real | Decisión final | Revisión del equipo |
-|---|---|---|---|---|---|---|---|
-| 1 | Identificar casos de éxito, error y límite del dominio | Casos VIP 200, regular 200, total 0 y −10, deuda, total 0.01, deuda 0 y 0.01, redondeo 99.99, prioridad total/deuda | Todos se derivan de `src/domain.py` y de los CSV del profesor; no se agregaron reglas | Agregadas 11 pruebas en `tests/test_order.py` | 16 aprobadas (E2) | Aceptada | Pendiente |
-| 2 | TDD de doble confirmación | Escribir primero `test_cannot_confirm_twice` (texto de la guía), ejecutarlo, luego la guarda mínima y un refactor | Coincide con la guía; el RED debía fallar por la causa correcta | Prueba agregada antes del cambio | RED: `DID NOT RAISE ValueError`; GREEN y suite completa aprobadas (E3) | Aceptada | Pendiente |
-| 3 | Probar persistencia | Fixtures con `engine.dispose()` y `filterwarnings=error::ResourceWarning`; pruebas de commit, rollback, unicidad y NOT NULL | La guía pide limpieza de recursos; la suite original dejaba conexiones SQLite abiertas (`ResourceWarning` en E1) | 6 pruebas agregadas; 2 originales adaptadas a fixtures | 8 aprobadas; se comprobó que una conexión sin cerrar ahora hace fallar la suite | Aceptada | Pendiente |
-| 4 | Probar la pasarela de pago | Mock con `spec_set=["charge"]`; aprobado, rechazado (VIP 200 → 170), timeout | El código no tiene reintentos ni circuit breaker: el timeout se verifica como excepción propagada con **un** intento | 5 pruebas agregadas | Aprobadas (E5) | Aceptada sin atribuir reintentos | Pendiente |
-| 5 | Documentar el riesgo de confirmar antes de pagar | Prueba `xfail(strict=True)` con la expectativa deseable en lugar de corregir el código | La guía pide anotar el riesgo como propuesta, sin ocultarlo | 1 prueba `xfail` | XFAIL (el pedido queda `CONFIRMED`) | Aceptada; la corrección queda como propuesta | Pendiente |
-| 6 | **Sugerencia rechazada** | La IA escribió `test_el_servicio_no_recibe_la_deuda_del_cliente`, que confirmaba un pedido de 150 con la pasarela simulada | Al revisarla: no verificaba una regla del contrato, solo ejecutaba líneas ya cubiertas; la guía prohíbe pruebas artificiales | **Descartada** antes del commit de E5 | — | La observación (checkout no recibe la deuda) se documenta en el reporte, sin prueba | Pendiente |
-| 7 | **Aserción corregida** | En PIA-13 la IA escribió `assert repo.listar_por_evento_id(...) == [] if hasattr(...) else True` | Esa expresión podía pasar sin comprobar nada (`else True`) | **Modificada** a `assert ... == []` tras confirmar que el método existe | Aprobada | Aceptada solo la versión corregida | Pendiente |
-| 8 | Seleccionar reglas de Eventos Nova | Usar la lista inicial de la guía (anticipo 30 %, pago final 7 días, cargo fijo, etc.) | Contrastada con BRD, US/CA, glosario y cierre de alcance: varias diferencias (pago final = 3 días hábiles; 30 % = mínimo; cargo = tarifa vigente) | Se probaron las reglas **aprobadas**; la del «pago final 7 días» no se probó | 21 aprobadas + 1 xfail (E9) | La documentación aprobada prevalece | Pendiente |
-| 9 | Hallazgo en el PIA | Esperar que, con una solicitud *No procedente*, no se consulte a proveedores (CA-083) | La IA marcó la prueba como `xfail` y **después** verificó con `--runxfail` que falla exactamente en `assert_not_called` | 1 prueba `xfail` (PIA-03b) | XFAIL: el mock se llamó 1 vez | Se reporta como hallazgo U5-H1; no se modificó el código del PIA | Pendiente |
-| 10 | Límites de días naturales | Usar el 15/11 a las 23:59 como «cinco días exactos» | Los documentos no definen si se cuenta por fecha o por 24 h; el código cuenta fechas | PIA-02 prueba el comportamiento actual | Aprobada | Se registra la ambigüedad U5-O1 en lugar de suponer una regla | Pendiente |
-| 11 | Calidad del CI | Corregir los 7 avisos `I001` con `ruff --fix` y añadir `pythonpath = ["."]` | Solo cambia el orden de imports y la configuración; la suite completa se volvió a ejecutar | Sin cambios de pruebas | Ruff sin errores; 13/13 aprobadas | Aceptada | Pendiente |
+1. **Requisito:** la regla existe en el código del laboratorio o en un documento aprobado de Eventos Nova.
+2. **Aserción:** la prueba comprueba un resultado útil y no solo ejecuta líneas.
+3. **Ejecución:** la prueba se ejecutó; si es nueva, se comprobó que falla cuando la regla no se cumple.
+4. **Equipo:** cada integrante puede explicar la decisión y la aprueba (pendiente).
 
-## Lección sobre el uso de IA
+## 3. Sesión 1 (27/10/2026) — reconstrucción a partir de los registros
 
-Dos propuestas de la IA (entradas 6 y 7) habrían elevado la cuenta de pruebas sin comprobar nada útil, y una tercera (entrada 8)
-venía de una lista de reglas que no coincidía con los documentos aprobados. Por eso cada prueba se ejecutó y se contrastó con el
-BRD, las historias de usuario y el código antes de aceptarla.
+No es una transcripción literal: se reconstruye con el historial de la conversación de trabajo, el historial de Git y `evidencias/`.
+
+| Hora | Objetivo | Propuesta de la IA | Evidencia | Resultado real | Decisión |
+|---|---|---|---|---|---|
+| 21:14 | Diagnóstico inicial | Ejecutar suite, cobertura y Ruff antes de cambiar nada | E1_01–E1_04 | 13/13; 98 %; 7 avisos de Ruff; `pytest` directo sin `src` | Corregir configuración (`e77bcc2`) |
+| 21:18 | Pruebas de dominio | VIP 200, regular 200, total 0 y −10, deuda, límites | E2_01 | 16/16 | Aceptada |
+| 21:18 | TDD | Escribir primero `test_cannot_confirm_twice` | E3_01, E3_03 | RED por `DID NOT RAISE` | Aceptada |
+| 21:19 | Persistencia | Fixtures con `dispose()`; commit, rollback, unicidad, NOT NULL | E4_01 | 8/8 | Aceptada |
+| 21:19 | Pasarela | Mock con `spec_set`; timeout sin suponer reintentos; riesgo con `xfail` | E5_01 | 7 + 1 xfail | Aceptada; una prueba artificial descartada |
+| 21:19 | Autorización | Matriz de 10 casos con fechas fijas | E6_01 | 20/20 | Aceptada |
+| 21:20 | Datos del profesor | CP01–CP15 con `csv.DictReader` | E2_02 | 15/15 | Aceptada |
+| 21:22–21:32 | PIA Eventos Nova | Pruebas sobre el código real (R1–R4, PostgreSQL, mocks) | E9_01–E9_06 | 21 + 1 xfail (U5-H1) | Aceptada; aserción de PIA-13 corregida |
+
+Propuestas corregidas o rechazadas: **S1-1** prueba sin regla (`test_el_servicio_no_recibe_la_deuda_del_cliente`) → rechazada;
+**S1-2** aserción `... == [] if hasattr(...) else True` → corregida a `assert ... == []`; **S1-3** reglas de la guía no aprobadas
+(pago final 7 días, cargo fijo) → rechazadas; **S1-4** `xfail` de PIA-03b → verificado con `--runxfail`.
+
+## 4. Sesión 2 (28/10/2026) — iteraciones ejecutadas
+
+| # | Objetivo | Problema | Propuesta de la IA | Archivos | Prueba ejecutada | Resultado real | Decisión | Validación del equipo |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Diagnóstico | `ModuleNotFoundError: domain` en 5 archivos | Comparar SHA-256, respaldar y reproducir en copia limpia | ZIP v1, `conftest.py` | E9_09, E9_10 | El ZIP v1 no traía el código del PIA (`pia_eventos_nova/src` no existía) | Integrar el código real | Pendiente |
+| 2 | Corrección | Falta de código; hallazgo U5-H1 | Copia del repo con `tests_u5/`, `pytest.ini`, `conftest.py` con mensaje claro; `motivo_rechazo_registro_disponibilidad()` | `conftest.py`, `pytest.ini`, `solicitudes.py`, `servicios.py` | `test_trazabilidad_api`, suite del equipo | **Propuesta corregida:** un comentario con «CA-083» alteró la trazabilidad generada; se retiró y la prueba pasó. Suite: 1 306, 1 fallo de entorno (E9_13) | Corrección solo en la copia; parche para el equipo | Pendiente |
+| 3 | Depuración | PIA-03b era `xfail` | RED sin `xfail`, GREEN, comprobar mensaje, probar sin código | `test_u5_r1_servicio_adicional_plazo.py` | E9_11, E9_12, E9_15, E9_18 | RED 1 fallo → GREEN; 22/22; sin código: mensaje de uso (código 4); con solo pytest+SQLAlchemy: 19 + 3 omitidas | PIA-03b queda como prueba normal | Pendiente |
+| 4 | Reglas de Eventos Nova | — | Mantener R1–R4 con éxito, error y límite | `matriz_pruebas_PIA.csv` | `pytest tests_u5`, `ruff check tests_u5` | 22 aprobadas; Ruff sin errores | Sin cambios de reglas | Pendiente |
+| 5 | Matrices y evidencias | Riesgo sumado a errores en el reporte v1; categoría «Error → Éxito» | «Riesgo documentado» separado; columna de fecha; demostrar causa del xfail y detección de conexiones abiertas | `generar_matrices.py`, CSV, `evidencias/` | E1_06, E7_07–E7_10, E5_02, E4_02 | 69 + 1 xfail; 100 % líneas y ramas; base 8/11/7 + 1 riesgo; PIA 7/9/6, 22 aprobadas | Matrices regeneradas; registros del 27/10 sin cambios | Pendiente |
+| 6 | Entrega | Afirmaciones del reporte v1 desactualizadas | Documentos con la plantilla del reporte; ZIP v2 verificado en carpeta limpia | `docs/`, README, ZIP v2 | Extracción limpia y ejecución | Ver la guía de pendientes, sección 6 | v2 preparada; v1 conservada | Pendiente |
+
+## 5. Decisiones que requieren aprobación del equipo
+
+| ID | Decisión | Situación | Aprobación |
+|---|---|---|---|
+| D-1 | Aplicar la corrección U5-H1 en el repositorio real del PIA | Aplicada solo en la copia | Pendiente |
+| D-2 | Agregar `tests_u5/` y `pytest.ini` al repositorio del PIA (y un paso de CI) | Preparado | Pendiente |
+| D-3 | Conteo de días naturales (U5-O1): por fecha o por 24 h | Se prueba el comportamiento actual (fecha) | Pendiente |
+| D-4 | Riesgo de pago del laboratorio: mantener `xfail` o implementar la propuesta | Documentado | Pendiente |
+| D-5 | `test_openapi_exportada` (versión de Pydantic) | Sin confirmar en el entorno del equipo | Pendiente |
+
+## 6. Revisión individual
+
+| Elemento | Lesly Adamaris Cotlame Nieto | Christopher Bethancourt Contreras | Francisco Mora Ruiz |
+|---|---|---|---|
+| Doble confirmación (LAB-12) | Pendiente | Pendiente | Pendiente |
+| Pago rechazado (LAB-27) | Pendiente | Pendiente | Pendiente |
+| Corrección de importaciones (tests_u5) | Pendiente | Pendiente | Pendiente |
+| Limpieza de conexiones SQLite | Pendiente | Pendiente | Pendiente |
+| Aserción débil corregida (PIA-13) | Pendiente | Pendiente | Pendiente |
+| Laboratorio frente a Eventos Nova | Pendiente | Pendiente | Pendiente |
+| Consulta a proveedores (PIA-03b) | Pendiente | Pendiente | Pendiente |
+| D-1 a D-5 | Pendiente | Pendiente | Pendiente |
+
+Las fichas de revisión (problema, por qué se aceptó o rechazó, regla protegida, qué demuestra la aserción, resultado, qué hacer si
+falla y conclusión) y las nueve preguntas de verificación están en el DOCX, secciones 8 y 9.
+
+## 7. Reflexión
+
+La IA cometió errores que solo aparecieron al ejecutar y revisar: una prueba que no verificaba nada, una aserción que no podía
+fallar, un comentario que alteró la trazabilidad del equipo y un paquete v1 sin el código que sus pruebas importaban. La
+documentación aprobada decide las reglas, la ejecución decide si una prueba sirve y la revisión del equipo decide la entrega.

@@ -18,13 +18,15 @@ Las reglas de pedidos (VIP, deuda, `SHIPPED`, etc.) **no** se usan en Eventos No
 | Ruta | Contenido |
 |---|---|
 | `docs/REPORTE_ACTIVIDAD5.docx` / `.pdf` | Reporte académico |
+| `docs/BITACORA_IA_ACTIVIDAD5.docx` | Bitácora de uso de IA (versión formal; `bitacora_uso_IA.md` es su versión en texto) |
+| `docs/GUIA_PENDIENTES_ACTIVIDAD5.docx` | Lo que el equipo debe hacer personalmente, paso a paso (E8, integración del PIA, revisión) |
 | `matriz_pruebas_base.csv` | 27 casos del laboratorio (resultado real tomado del JUnit XML) |
 | `matriz_pruebas_PIA.csv` | 22 casos de Eventos Nova con trazabilidad a BN/SE/GL/US/CA |
 | `evidencias/` | E1–E9: registros reales de ejecución e imágenes (ver `evidencias/README.md`) |
 | `htmlcov/` | Reporte HTML de cobertura de la ejecución final (no se versiona en Git) |
 | `bitacora_uso_IA.md` | Bitácora del uso de IA |
 | `herramientas/` | `ci_local.sh`, `generar_matrices.py`, `renderizar_registros.py` |
-| `pia_eventos_nova/` | Pruebas `tests_u5/`, README y reportes HTML de cobertura del PIA |
+| `pia_eventos_nova/` | Copia del código real de Eventos Nova con `tests_u5/` integradas, parche U5-H1, README y reportes HTML |
 
 ---
 
@@ -123,4 +125,6 @@ El historial muestra el trabajo por pasos, incluido el ciclo TDD: `TDD RED` (pru
 
 ## 9. Adaptación al PIA (Eventos Nova)
 
-Ver `pia_eventos_nova/README.md`. Resumen: 22 pruebas pytest (4 reglas aprobadas, 21 aprobadas y 1 `xfail` que documenta un hallazgo) sobre el código real, incluidas pruebas con PostgreSQL y con dobles de prueba de los puertos externos.
+Ver `pia_eventos_nova/README.md`. Resumen (28/10/2026): 22 pruebas pytest sobre el código real (4 reglas aprobadas), todas aprobadas después de corregir el hallazgo U5-H1, incluidas pruebas con PostgreSQL y con dobles de prueba de los puertos externos. Se ejecutan desde `pia_eventos_nova/Eventosnova/` con `python -m pytest`.
+
+La copia de Eventos Nova se entrega en el ZIP pero no se versiona en este repositorio (está en `.gitignore`): su lugar es el repositorio del equipo del PIA.

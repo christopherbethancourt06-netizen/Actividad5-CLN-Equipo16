@@ -1,0 +1,12 @@
+# Registro: 2026-10-28 15:11:23 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m pytest tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar -v -p no:cacheprovider
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/pia/.venv/bin/python
+rootdir: /home/claude/work/pia/Eventosnova
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 1 item
+
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar PASSED [100%]
+
+============================== 1 passed in 0.09s ===============================
+[código de salida: 0]

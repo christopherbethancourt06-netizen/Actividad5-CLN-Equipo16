@@ -1,0 +1,87 @@
+# Registro: 2026-10-28 15:15:19 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m pytest tests_u5 -q -p no:cacheprovider --cov=src --cov-branch --cov-report=term --cov-report=html:htmlcov_u5
+......................                                                   [100%]
+=============================== warnings summary ===============================
+../.venv/lib/python3.13/site-packages/coverage/core.py:108
+  /home/claude/work/pia/.venv/lib/python3.13/site-packages/coverage/core.py:108: CoverageWarning: Couldn't import C tracer: No module named 'coverage.tracer' (no-ctracer); see https://coverage.readthedocs.io/en/7.16.2/messages.html#warning-no-ctracer
+    warn(f"Couldn't import C tracer: {IMPORT_ERROR}", slug="no-ctracer", once=True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                                                         Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------------------------------
+src/__init__.py                                                  0      0      0      0 100.0%
+src/api/__init__.py                                              0      0      0      0 100.0%
+src/api/dependencias.py                                         11     11      0      0   0.0%   7-24
+src/api/errores.py                                              52     52      4      0   0.0%   5-82
+src/api/esquemas.py                                             42     42      2      0   0.0%   7-73
+src/api/esquemas_operaciones.py                                 99     99      0      0   0.0%   7-174
+src/api/main.py                                                 59     59     10      0   0.0%   14-96
+src/api/rutas_comunes.py                                        24     24      4      0   0.0%   13-46
+src/api/rutas_consultas.py                                      42     42      0      0   0.0%   4-75
+src/api/rutas_contratacion.py                                   34     34      0      0   0.0%   4-67
+src/api/rutas_eventos.py                                        36     36      0      0   0.0%   3-69
+src/api/rutas_pagos.py                                          40     40      0      0   0.0%   3-80
+src/api/rutas_propuestas.py                                     18     18      0      0   0.0%   2-30
+src/api/rutas_solicitudes.py                                    77     77      0      0   0.0%   6-169
+src/application/__init__.py                                      0      0      0      0 100.0%
+src/application/cqrs.py                                        343     98     48      0  62.7%   47, 54, 61, 68, 124-147, 166-169, 173-182, 218-225, 354, 358, 372-401, 411-418, 428-442, 451-462, 473-486, 522-528
+src/application/puertos.py                                      29      0      0      0 100.0%
+src/application/reacciones.py                                  114     20     38      5  73.0%   33, 42, 63-68, 76-79, 82-87, 112->exit, 128, 133, 137->exit, 138->exit, 139->exit
+src/application/resultados.py                                   15      0      0      0 100.0%
+src/application/servicios.py                                   671    271    110     29  57.2%   42->40, 44, 70-71, 80, 88, 98, 116-117, 125, 132-139, 146-147, 151-157, 172, 176-177, 193-194, 215, 227, 264-265, 283, 287, 295, 297, 301-302, 312, 320, 343-344, 351, 356-357, 360, 365-368, 372-379, 382-395, 404, 414-425, 441-442, 445-446, 454-465, 469-475, 481-489, 492-498, 501-507, 537, 541-545, 558-559, 567-568, 576-577, 579, 586, 591-592, 597-605, 608-616, 619-621, 635, 653-657, 666, 668, 688, 697, 706-707, 711-718, 731, 737, 764-766, 784-798, 802-817, 820-823, 826-832, 835-841, 844-851, 854-856, 870-876, 879, 883-885, 892-898, 905-913
+src/domain/__init__.py                                           0      0      0      0 100.0%
+src/domain/base.py                                              13      0      0      0 100.0%
+src/domain/contrato.py                                          85      7     22      7  86.9%   71, 98, 107, 126, 130, 136, 138
+src/domain/especificacion.py                                    92     13     10      1  84.3%   60, 63, 66, 88-89, 92, 95, 103, 117, 141-143, 157
+src/domain/especificaciones.py                                  88      2      0      0  97.7%   81, 95
+src/domain/estado_cuenta.py                                    318    102     86     18  61.4%   128, 132, 136, 141, 166, 168, 185, 194-198, 211, 213, 216, 221-224, 242, 246-247, 249, 259-261, 265-272, 279, 285, 286->288, 290-293, 306, 311, 321-328, 339, 343->348, 364, 413-414, 418, 428-438, 445-452, 457-484, 488, 502, 521-523, 527-532
+src/domain/evento.py                                           179     77     58      6  47.3%   112, 120, 132-138, 147-158, 163, 170-176, 180-183, 187-188, 194-202, 207-215, 221, 226-228, 240-252, 259-263, 268-273, 279-284
+src/domain/eventos_dominio.py                                   80      1     58      0  99.3%   17
+src/domain/maquina_estados.py                                   59      9     16      4  82.7%   48, 51, 56, 62, 65, 75, 80-81, 86
+src/domain/propuesta.py                                         46     13      6      3  69.2%   30, 34-40, 45, 51-53, 57
+src/domain/servicios_dominio.py                                 50      1      8      2  94.8%   57, 89->91
+src/domain/solicitudes.py                                      391    116     88     21  64.7%   57, 65-69, 76, 84, 87, 90-92, 94, 209, 250, 275->277, 288, 297, 305, 307, 312-331, 334-336, 339-343, 462-464, 466, 470, 473-474, 476-477, 479, 485-495, 504, 513, 521, 544-548, 620, 623-629, 633, 637-642, 645-646, 649-653, 658-665, 668, 673-674, 681-693, 696-700, 705-707
+src/domain/valores.py                                          262     12     26      9  92.7%   162, 164, 166, 169, 186, 199, 202, 204, 217, 265-266, 329, 384->382
+src/ejecucion_paquete/__init__.py                                5      5      0      0   0.0%   11-16
+src/ejecucion_paquete/__main__.py                               19     19      8      0   0.0%   2-26
+src/ejecucion_paquete/casos.py                                  81     81     14      0   0.0%   8-118
+src/ejecucion_paquete/evidencias.py                            108    108     28      0   0.0%   17-199
+src/ejecucion_paquete/mapeo.py                                  36     36      0      0   0.0%   9-160
+src/ejecucion_paquete/oraculo.py                                30     30      6      0   0.0%   10-52
+src/ejecucion_paquete/reglas_paquete.py                         43     43      0      0   0.0%   11-80
+src/ejecucion_paquete/totales.py                                30     30     16      0   0.0%   10-53
+src/ejecucion_paquete/transiciones.py                          247    247     76      0   0.0%   19-364
+src/infrastructure/__init__.py                                   0      0      0      0 100.0%
+src/infrastructure/adaptadores.py                               39     12      4      0  62.8%   17, 38, 47-53, 60, 65-66
+src/infrastructure/composicion.py                               19      0      0      0 100.0%
+src/infrastructure/esquema_postgresql.py                        85      0      2      0 100.0%
+src/infrastructure/persistencia/__init__.py                      0      0      0      0 100.0%
+src/infrastructure/persistencia/codec_eventos.py                81     42     42      6  36.6%   49-64, 70-85, 97, 104-107, 110, 112-113, 117, 121-122
+src/infrastructure/persistencia/composicion_persistente.py      51     17     12      3  58.7%   33-36, 40-43, 44->51, 47-50, 63-64, 68, 75-76
+src/infrastructure/persistencia/conexion.py                     92     33     16      3  59.3%   26-42, 57, 61-62, 70-75, 83-84, 91, 101, 105-106, 117-118, 121
+src/infrastructure/persistencia/configuracion.py                43     11     12      2  65.5%   22-26, 35, 43-46, 54
+src/infrastructure/persistencia/errores.py                      18      6      0      0  66.7%   14-15, 22-23, 41-42
+src/infrastructure/persistencia/mapeadores.py                  176     37     26      6  74.8%   54, 58, 73, 80, 87, 95-96, 101-104, 108-110, 115-118, 123-125, 262, 267, 290-303, 306-308, 352-361, 364-369, 441-442
+src/infrastructure/persistencia/outbox_sql.py                  127     38     24      5  67.5%   57, 65, 83-84, 89-105, 109-112, 124, 145-148, 154-157, 162, 165-167, 173-176
+src/infrastructure/persistencia/preparacion.py                  63      7     10      5  83.6%   26, 42, 53-54, 67, 75, 88
+src/infrastructure/persistencia/repositorios_sql.py            107     10     20      3  89.8%   36, 52->54, 101, 115, 129, 136, 139, 142-143, 166, 169
+src/infrastructure/persistencia/trabajador_outbox.py            45     45     12      0   0.0%   9-63
+src/infrastructure/persistencia/unidad_trabajo_sql.py           48      7     12      4  81.7%   40, 48, 54, 61-64, 71->exit
+src/infrastructure/repositorios_memoria.py                      50      4      6      0  92.9%   40, 45, 65, 78
+src/infrastructure/unidad_trabajo.py                            71      8     20      2  84.6%   65-66, 85, 89-90, 94-96
+src/paquete_pia/__init__.py                                      6      6      0      0   0.0%   10-17
+src/paquete_pia/__main__.py                                     28     28      6      0   0.0%   8-42
+src/paquete_pia/dto.py                                          59     59      0      0   0.0%   6-87
+src/paquete_pia/errores.py                                      25     25      6      0   0.0%   2-35
+src/paquete_pia/esquema.py                                      37     37      0      0   0.0%   7-87
+src/paquete_pia/formatos.py                                     56     56     18      0   0.0%   6-85
+src/paquete_pia/lector.py                                       99     99     50      0   0.0%   11-148
+src/paquete_pia/manifiesto.py                                   58     58     24      0   0.0%   6-79
+--------------------------------------------------------------------------------------------------------
+TOTAL                                                         5451   2520   1064    144  50.4%
+Coverage HTML written to dir htmlcov_u5
+22 passed, 1 warning in 3.43s
+[código de salida: 0]

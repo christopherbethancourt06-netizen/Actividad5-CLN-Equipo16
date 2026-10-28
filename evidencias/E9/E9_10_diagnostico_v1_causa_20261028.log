@@ -1,0 +1,26 @@
+# Registro: 2026-10-28 15:10:01 CST  |  dir: (copia limpia del ZIP v1)/Actividad5_CLN_Equipo16  |  Python 3.13.18
+$ sh -c echo "Contenido de pia_eventos_nova/ en el ZIP v1:"; ls pia_eventos_nova; echo; echo "Rutas que tests_u5/conftest.py agrega a sys.path y si existen:"; python -c "
+import os
+raiz=os.path.abspath(os.path.join(\"pia_eventos_nova/tests_u5\",\"..\"))
+for r in (os.path.join(raiz,\"src\"), os.path.join(raiz,\"tests\")): print(\" \", os.path.relpath(r), \"->\", \"existe\" if os.path.isdir(r) else \"NO EXISTE\")
+"; echo; echo "Primer import de los archivos que fallan:"; grep -n "^from domain\|^from application\|^from infrastructure\|^from apoyo_flujo" pia_eventos_nova/tests_u5/*.py | head -8
+Contenido de pia_eventos_nova/ en el ZIP v1:
+README.md
+htmlcov_pia_completo
+htmlcov_u5
+tests_u5
+
+Rutas que tests_u5/conftest.py agrega a sys.path y si existen:
+  pia_eventos_nova/src -> NO EXISTE
+  pia_eventos_nova/tests -> NO EXISTE
+
+Primer import de los archivos que fallan:
+pia_eventos_nova/tests_u5/apoyo_u5.py:8:from application.puertos import IConsultaDisponibilidadProveedor, IVerificadorPagos
+pia_eventos_nova/tests_u5/apoyo_u5.py:9:from domain.valores import ConceptoPago, CondicionesServicio, Decision, DisponibilidadProveedor, Importe, TipoSolicitud
+pia_eventos_nova/tests_u5/apoyo_u5.py:10:from infrastructure.composicion import construir
+pia_eventos_nova/tests_u5/apoyo_u5.py:12:from apoyo_flujo import FECHA_EVENTO, T0, Flujo
+pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py:14:from domain.valores import CausaCierreSolicitud, DisponibilidadProveedor, EstadoContrato
+pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py:15:from domain.valores import EstadoObligacionPago as EO
+pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py:16:from domain.valores import EstadoPago as EPg
+pia_eventos_nova/tests_u5/test_u5_integracion_persistencia_y_mocks.py:17:from domain.valores import EstadoSolicitudServicioAdicional as ESA
+[código de salida: 0]

@@ -1,0 +1,22 @@
+# Registro: 2026-10-28 15:17:10 CST  |  dir: lab  |  Python 3.13.18
+$ python -m pytest tests/test_service.py::test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza --runxfail -q -p no:cacheprovider
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza _____
+
+    @pytest.mark.xfail(strict=True, reason="Riesgo documentado: checkout() confirma el pedido ANTES de conocer el "
+                                           "resultado del pago; con el pago rechazado el pedido queda CONFIRMED.")
+    def test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza():
+        gateway = pasarela(False)
+        order = Order(200, vip=True)
+        with pytest.raises(RuntimeError):
+            OrderService(gateway).checkout(order)
+>       assert order.status != "CONFIRMED"
+E       AssertionError: assert 'CONFIRMED' != 'CONFIRMED'
+E        +  where 'CONFIRMED' = Order(total=200, vip=True, status='CONFIRMED', discount=30.0).status
+
+tests/test_service.py:98: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_service.py::test_riesgo_pedido_no_deberia_quedar_confirmado_si_el_pago_se_rechaza
+1 failed in 0.02s
+[código de salida: 1]

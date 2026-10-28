@@ -1,0 +1,48 @@
+# Registro: 2026-10-28 15:10:51 CST  |  dir: pia/Eventosnova  |  Python 3.13.18
+$ python -m pytest tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar -v -p no:cacheprovider
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/work/pia/.venv/bin/python
+rootdir: /home/claude/work/pia/Eventosnova
+plugins: cov-6.3.0, platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 1 item
+
+tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar _
+
+    def test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar():
+        # Hallazgo U5-H1 (27/10/2026): antes de la corrección del 28/10/2026 el servicio consultaba al puerto de proveedores
+        # aunque la solicitud ya fuera No procedente. Esta prueba fue `xfail` hasta que se corrigió el servicio.
+        disponibilidad = mock_disponibilidad()
+        f = contratado(disponibilidad=disponibilidad)
+        dia = datetime(2026, 11, 16, 0, 0)
+        sid = f.s.adicionales.registrar_solicitud_servicio_adicional(f.evento_id, f.contrato_id, 'DJ', dia).datos['solicitud_id']
+        r = f.s.adicionales.evaluar_disponibilidad_servicio_adicional(sid, [], dia)
+        assert not r.exito                                                   # el dominio sí rechaza el cambio de estado
+        assert _solicitud(f, sid).estado == ESA.NO_PROCEDENTE
+>       disponibilidad.consultar.assert_not_called()                         # expectativa según CA-083
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_u5/test_u5_r1_servicio_adicional_plazo.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Mock name='mock.consultar' id='139899988822736'>
+
+    def assert_not_called(self):
+        """assert that the mock was never called.
+        """
+        if self.call_count != 0:
+            msg = ("Expected '%s' to not have been called. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'consultar' to not have been called. Called 1 times.
+E           Calls: [call('DJ', datetime.datetime(2026, 11, 20, 18, 0), [])].
+
+/usr/local/lib/python3.13/unittest/mock.py:940: AssertionError
+=========================== short test summary info ============================
+FAILED tests_u5/test_u5_r1_servicio_adicional_plazo.py::test_pia03b_solicitud_no_procedente_no_debe_consultar_proveedores_al_reintentar
+============================== 1 failed in 0.45s ===============================
+[código de salida: 1]

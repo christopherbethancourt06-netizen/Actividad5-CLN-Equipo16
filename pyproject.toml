@@ -10,3 +10,5 @@ source = ["src"]
 
 [tool.ruff]
 line-length = 100
+# El proyecto de Eventos Nova incluido en pia_eventos_nova/ tiene su propia configuración (tests_u5/ruff.toml).
+extend-exclude = ["pia_eventos_nova"]

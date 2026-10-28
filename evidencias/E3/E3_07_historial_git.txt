@@ -1,11 +1,12 @@
-4e37236  2026-10-27 21:14  Proyecto base U5 tal como lo entrega el profesor
-b6bf822  2026-10-27 21:17  Configuración: .gitignore, pythonpath para pytest y orden de imports (ruff --fix)
-422c7ef  2026-10-27 21:18  E2: pruebas unitarias del dominio (VIP 200, regular 200, errores y límites)
-f6ab2ef  2026-10-27 21:18  TDD RED: test_cannot_confirm_twice (falla: el código permite confirmar dos veces)
-e1cd43f  2026-10-27 21:18  TDD GREEN: impedir confirmar un pedido ya confirmado
-926bd4b  2026-10-27 21:18  TDD REFACTOR: extraer validaciones de confirm() y constantes de estado
-1fc4307  2026-10-27 21:19  E4: pruebas de persistencia, commit, rollback y restricciones con limpieza de recursos
-352da24  2026-10-27 21:19  E5: pago aprobado, rechazado, timeout y verificación del mock; riesgo de confirmación previa documentado (xfail)
-9ce52d0  2026-10-27 21:19  E6: matriz de autorización con fechas fijas (admin, propietario a 24 h, tercero, SHIPPED)
-57860d6  2026-10-27 21:20  Pruebas parametrizadas con los CSV del profesor (CP01–CP15) mediante csv.DictReader
-ac5f341  2026-10-27 21:31  CI: workflow con Ruff, pytest (cobertura ≥ 80 %, reporte HTML), compileall y matriz 3.11/3.13; script de CI local
+1fd311f  2026-10-27 21:14  Proyecto base U5 tal como lo entrega el profesor
+e77bcc2  2026-10-27 21:17  Configuración: .gitignore, pythonpath para pytest y orden de imports (ruff --fix)
+dda0a74  2026-10-27 21:18  E2: pruebas unitarias del dominio (VIP 200, regular 200, errores y límites)
+d9d58dd  2026-10-27 21:18  TDD RED: test_cannot_confirm_twice (falla: el código permite confirmar dos veces)
+2f69919  2026-10-27 21:18  TDD GREEN: impedir confirmar un pedido ya confirmado
+2750bbd  2026-10-27 21:18  TDD REFACTOR: extraer validaciones de confirm() y constantes de estado
+629158e  2026-10-27 21:19  E4: pruebas de persistencia, commit, rollback y restricciones con limpieza de recursos
+471a9cd  2026-10-27 21:19  E5: pago aprobado, rechazado, timeout y verificación del mock; riesgo de confirmación previa documentado (xfail)
+a33ed67  2026-10-27 21:19  E6: matriz de autorización con fechas fijas (admin, propietario a 24 h, tercero, SHIPPED)
+eeb547d  2026-10-27 21:20  Pruebas parametrizadas con los CSV del profesor (CP01–CP15) mediante csv.DictReader
+9581091  2026-10-27 21:31  CI: workflow con Ruff, pytest (cobertura ≥ 80 %, reporte HTML), compileall y matriz 3.11/3.13; script de CI local
+c93412e  2026-10-27 21:41  Documentación, matrices, evidencias y adaptación al PIA Eventos Nova

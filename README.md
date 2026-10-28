@@ -13,6 +13,19 @@ Este repositorio contiene dos alcances separados:
 
 Las reglas de pedidos (VIP, deuda, `SHIPPED`, etc.) **no** se usan en Eventos Nova, y las de Eventos Nova no se mezclan con el laboratorio.
 
+### Contenido de la entrega
+
+| Ruta | Contenido |
+|---|---|
+| `docs/REPORTE_ACTIVIDAD5.docx` / `.pdf` | Reporte académico |
+| `matriz_pruebas_base.csv` | 27 casos del laboratorio (resultado real tomado del JUnit XML) |
+| `matriz_pruebas_PIA.csv` | 22 casos de Eventos Nova con trazabilidad a BN/SE/GL/US/CA |
+| `evidencias/` | E1–E9: registros reales de ejecución e imágenes (ver `evidencias/README.md`) |
+| `htmlcov/` | Reporte HTML de cobertura de la ejecución final (no se versiona en Git) |
+| `bitacora_uso_IA.md` | Bitácora del uso de IA |
+| `herramientas/` | `ci_local.sh`, `generar_matrices.py`, `renderizar_registros.py` |
+| `pia_eventos_nova/` | Pruebas `tests_u5/`, README y reportes HTML de cobertura del PIA |
+
 ---
 
 ## 1. Requisitos y versiones

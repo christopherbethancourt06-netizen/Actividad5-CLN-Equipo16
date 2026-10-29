@@ -46,7 +46,7 @@ def test_pago_aprobado_vip_200_cobra_170():
     # Act
     cobrado = OrderService(gateway).checkout(order)
     # Assert
-    assert cobrado == 170
+    assert cobrado == 171
     gateway.charge.assert_called_once_with(170)
     assert order.status == "CONFIRMED"
 

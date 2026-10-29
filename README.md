@@ -109,15 +109,17 @@ La base `pedidos_prueba.sqlite3` del profesor **no** se usa: las pruebas de repo
 
 `.github/workflows/ci.yml` se ejecuta en cada push, pull request o manualmente: checkout → Python (3.11 y 3.13) → dependencias → Ruff → pytest con `--cov-fail-under=80` y reporte HTML (artefacto) → `compileall`.
 
-**Evidencia E8 (pendiente de ejecutar en GitHub con la cuenta del equipo):**
-```bash
-git remote add origin https://github.com/<usuario>/<repositorio>.git
-git push -u origin main                      # 1) ejecución verde
-# 2) fallo controlado: cambiar en tests/test_service.py  `assert cobrado == 170`  por  `assert cobrado == 171`
-git commit -am "E8: fallo controlado temporal" && git push      # ejecución roja
-git revert --no-edit HEAD && git push                            # 3) ejecución verde de nuevo
-```
-Capturar las tres ejecuciones en la pestaña *Actions* y anotar la URL del repositorio. La protección de la rama (*branch protection / rulesets*) se configura aparte en GitHub; tener el YAML no la activa.
+**Evidencia E8 (completada el 28/10/2026 en GitHub Actions):**
+
+Repositorio: https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16
+
+| Ejecución | Resultado | Commit | URL |
+|---|---|---|---|
+| 1 | Verde (Python 3.11 y 3.13) | `92cb81b` | https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40807515988 |
+| 2 | Roja: fallo controlado, `assert 170.0 == 171` | `7fe5fcf` | https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40808825010 |
+| 3 | Verde tras `git revert` | `581ec34` | https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40819382562 |
+
+Las capturas y las URLs están en `evidencias/E8/` (`E8_06`, `E8_07`, `E8_08` y `E8_09_ejecuciones_GitHub.txt`). Las simulaciones locales anteriores de E8 se conservan como simulaciones locales y no son ejecuciones remotas. Antes de la primera ejecución se corrigieron dos avisos de Ruff (`datetime.UTC`) en el commit `92cb81b`. La protección de la rama (*branch protection / rulesets*) se configura aparte en GitHub; tener el YAML no la activa.
 
 ## 8. Historial de Git
 

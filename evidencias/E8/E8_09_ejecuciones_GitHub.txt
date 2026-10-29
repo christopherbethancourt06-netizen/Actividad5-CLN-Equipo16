@@ -1,0 +1,12 @@
+﻿Repositorio: https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16
+Fecha de las ejecuciones: 28/10/2026
+Workflow: CI Business Logic (Python 3.11 y 3.13)
+
+Ejecucion 1 - VERDE - commit 92cb81b
+https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40807515988
+
+Ejecucion 2 - ROJA (fallo controlado, assert 170.0 == 171) - commit 7fe5fcf
+https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40808825010
+
+Ejecucion 3 - VERDE tras git revert - commit 581ec34
+https://github.com/christopherbethancourt06-netizen/Actividad5-CLN-Equipo16/actions/runs/40819382562

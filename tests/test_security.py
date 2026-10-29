@@ -2,14 +2,14 @@
 dependen del reloj del equipo. Política implementada (src/security.py):
 1) SHIPPED nunca se cancela, ni por un administrador; 2) en otro estado, el administrador puede cancelar;
 3) el propietario no administrador solo puede cancelar si han pasado MENOS de 24 horas (a las 24 h exactas ya no)."""
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
 from src import security
 from src.security import can_cancel
 
-CREADO = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+CREADO = datetime(2026, 10, 1, 10, 0, tzinfo=UTC)
 PROPIETARIO, OTRO = 1, 2
 
 
